@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Custom Rotating Images</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles.css?v=3">
+</head>
+
+<body onload="pauseRotation()">
+	<header class="header">
+		<h1>Custom Rotating Images</h1>
+	</header>
+	<div class="main-layout">
+		<!-- Left Sidebar -->
+		<aside class="sidebar">
+			<!-- Unified Controls Card -->
+			<div class="controls-card">
+				<!-- Title -->
+				<h3 class="controls-title">Playback &amp; Settings</h3>
+
+				<!-- Play/Reset Buttons -->
+				<div class="controls-section">
+					<div class="button-group">
+						<button class="pause-button" id="pauseRotation">Start</button>
+						<button class="reset-button" id="resetRotation">Reset Rotation</button>
+					</div>
+				</div>
+
+				<!-- Background & Design Options -->
+				<div class="controls-section">
+					<div class="control-row">
+						<label for="color">Background:</label>
+						<select name="color" id="color">
+							<option value="bgColor">Solid Color</option>
+							<option value="animColor">Animated Colors</option>
+						</select>
+						<input type="color" id="bgColor" value="#D2D0D6" class="color-picker">
+						<label id="bgAnimSpeedLabel" for="bgAnimSpeed" style="margin-left: 8px; display: none;">Anim Speed (s):</label>
+						<input type="number" id="bgAnimSpeed" min="0.1" step="0.1" value="1" style="width: 80px; display: none;" inputmode="decimal">
+						<div id="animColorControls" style="display:none; align-items:center; gap:8px;">
+							<div id="animColorList" style="display:flex; gap:8px; align-items:center;"></div>
+							<button class="bg-button" id="addAnimColor">Add Color</button>
+							<button class="bg-button" id="removeAnimColor">Remove</button>
+							<button class="bg-button" id="animColorButton">Start BG Anim</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Design Checkboxes -->
+				<div class="controls-section">
+					<div class="checkbox-group">
+						<label class="checkbox-label" id="sameDesignText" for="sameDesign">
+							<input type="checkbox" id="sameDesign">
+							<span>Same Design</span>
+						</label>
+						<label class="checkbox-label" id="flippedText" for="flipped" style="display: none;">
+							<input type="checkbox" id="flipped">
+							<span>Flip Design</span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Image Configuration Grid -->
+			<div class="grid-container">
+				<div class="grid-item">
+					<h4 class="grid-title">Image #1</h4>
+					<ul>
+						<li>
+							<label for="inputImage1">Upload Image:</label>
+							<input type="file" id="inputImage1" accept="image/*">
+						</li>
+						<li>
+							<label for="speed1">Rotation Speed (seconds):</label>
+							<input type="number" id="speed1" min="1" max="20" value="0" inputmode="numeric">
+						</li>
+						<li>
+							<label for="direction1">
+								<input type="checkbox" id="direction1" style="margin-right: 6px;">
+								Flip Rotation Direction
+							</label>
+						</li>
+					</ul>
+				</div>
+				<div class="grid-item">
+					<h4 class="grid-title">Image #2</h4>
+					<ul>
+						<li>
+							<label for="inputImage2">Upload Image:</label>
+							<input type="file" id="inputImage2" accept="image/*">
+							<p id="inputImage2Text" style="display: none; color: #27ae60; font-size: 12px; margin-top: 4px;">✓ Same Design Checked</p>
+						</li>
+						<li>
+							<label for="speed2">Rotation Speed (seconds):</label>
+							<input type="number" id="speed2" min="1" max="20" value="0" inputmode="numeric">
+						</li>
+						<li>
+							<label for="direction2">
+								<input type="checkbox" id="direction2" style="margin-right: 6px;">
+								Flip Rotation Direction
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Instructions -->
+			<div class="grid-item instructions-card">
+				<h4 class="grid-title">Instructions</h4>
+				<ul class="instructions">
+					<li>Import a image of the moire disk design into Image #1 by selecting the desired file section.</li>
+					<li>If Disk 2 shares the same design as Disk 1, check the "Same Design" checkbox. If Disk 2's design is flipped, check the
+						"Flipped" checkbox.</li>
+					<li>Adjust the background color by clicking on the gray box near the text "BG Color."</li>
+					<li>You can also animate the background color by clicking on blue button, "BG Color" and selecting to "Animated BG Color".</li>
+					<li>For the Animated BG Color, just hex codes for colors and seperate them with commas.</li>
+					<li>Initiate or pause the rotation by clicking the "Start" button.</li>
+					<li>If any issues occur with the rotation, such as being out of sync, press the "Reset Rotation" button to fix it.</li>
+					<li>Modify the rotation direction of each individual disk as needed by toggling the "Flip Direction" checkbox for each image.</li>
+					<li>Alter the rotation speed for each image to your preference (Higher values result in slower rotation).</li>
+				</ul>
+			</div>
+		</aside>
+
+		<!-- Right Section: Image Display -->
+		<div class="image-section">
+			<div class="image-container" id="imageContainer">
+				<img id="image1" class="image" src="DPEA_Logo.png?v=3" style="--rotation-speed: 0s; --rotation-direction: normal; animation-play-state: paused;">
+				<img id="image2" class="image" src="DPEA_Logo.png?v=3" style="--rotation-speed: 0s; --rotation-direction: normal; animation-play-state: paused;">
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<h5>Created by Aayush Kokate</h5>
+		<h5>Beautified by Sean Wirtz and Aayush Kokate</h5>
+	</footer>
+	<script src="script.js?v=3"></script>
+</body>
+
+</html>
