@@ -13,6 +13,8 @@ produce. Everything runs client-side — no upload leaves your browser.
 - Start / pause / resume / reset playback
 - "Same Design" mirroring, with an optional horizontal flip
 - Solid or animated background color
+- Export a seamlessly-looping GIF of the animation (loop length = the exact
+  point where the pattern repeats)
 - Fully responsive layout
 
 ## Running locally
