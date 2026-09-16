@@ -27,6 +27,17 @@ python3 -m http.server 8000
 
 Then open http://localhost:8000/.
 
+## Single-file build
+
+`moire-standalone.html` is a self-contained copy with all CSS, JavaScript, the
+gifenc library, and the logo inlined — handy for pasting into a Google Sites
+embed or hosting as one file. It's generated from the source files; regenerate
+it after any change with:
+
+```bash
+python3 build-standalone.py
+```
+
 ## Credits
 
 - Created by Aayush Kokate
