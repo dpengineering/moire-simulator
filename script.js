@@ -199,15 +199,24 @@ resetRotationButton.addEventListener("click", () => {
     resetAnimation();
 });
 
+// Remembers the user's own Image #2 while "Same Design" borrows Image #1's,
+// so unchecking restores it instead of discarding it.
+let savedImage2Src = null;
+
 sameDesignCheckBox.addEventListener("click", (event) => {
     if (event.target.checked) {
         flipDesignCheckBox.style.display = "inline-grid";
         flipDesignText.style.display = "inline-block";
+        savedImage2Src = image2.src;
         image2.src = image1.src;
     } else {
         flipDesignCheckBox.style.display = "none";
         flipDesignText.style.display = "none";
-        image2.src = "DPEA_Logo.png?v=3";
+        // The flip only applies to the borrowed design; clear it so the
+        // restored Image #2 isn't left mirrored.
+        flipDesignCheckBox.checked = false;
+        image2.style.scale = "1 1";
+        image2.src = savedImage2Src || "DPEA_Logo.png?v=3";
         inputImage2Text.style.display = "none";
         inputImage2.style.display = "inline-block";
     }
